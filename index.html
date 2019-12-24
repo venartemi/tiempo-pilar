@@ -1,51 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>La cuenta de Pilar</title>
-
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content="widht = device-widht, initial-scale=1.0">
-</head>
-<body>
-
-<h2>La página para saber la cuenta de Pilar:</h2>
-
-<p>Esta página nos ofrece el insumo de tiempo que Pilar lleva sin practicar el coito.</p>
-    
-<p> Desde la última vez que Pilar bailó en hroizontal se toma la fecha a nivel de segundos para, con la fecha del dispositivo,
-    contar el tiempo total que lleva sin darse una alegría.</p>
-
-<div id="time-elapsed"></div>
-
-<p id="demo"></p>
-
-<script>
-var startDateTime = new Date(2019,5,2,11,1,04,0); // YYYY (M-1) D H m s (start time and date from DB)
-var startStamp = startDateTime.getTime();
-
-var newDate = new Date();
-var newStamp = newDate.getTime();
-
-var timer;
-
-function updateClock() {
-    newDate = new Date();
-    newStamp = newDate.getTime();
-    var diff = Math.round((newStamp-startStamp)/1000);
-    
-    var d = Math.floor(diff/(24*60*60));
-    diff = diff-(d*24*60*60);
-    var h = Math.floor(diff/(60*60));
-    diff = diff-(h*60*60);
-    var m = Math.floor(diff/(60));
-    diff = diff-(m*60);
-    var s = diff;
-    
-    document.getElementById("time-elapsed").innerHTML = d+" dia(s), "+h+" hora(s), "+m+" minuto(s), "+s+" segundo(s) sin follar";
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
 }
 
-setInterval(updateClock, 1000);
-</script>
+.bgimg {
+  background-image: url('/w3images/forestbridge.jpg');
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: black;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+}
+
+.topleft {
+  position: absolute;
+  top: 0;
+  left: 16px;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+hr {
+  margin: auto;
+  width: 40%;
+}
+</style>
+<body>
+
+<div class="bgimg">
+
+  <div class="middle">
+    <h1>Pilar lleva sin follar:</h1>
+    <hr>
+    <p><div id="time-elapsed"></div></p>
+    <script>
+        var startDateTime = new Date(2019,5,2,11,1,04,0); // YYYY (M-1) D H m s (start time and date from DB)
+        var startStamp = startDateTime.getTime();
+
+        var newDate = new Date();
+        var newStamp = newDate.getTime();
+
+        var timer;
+
+        function updateClock() {
+            newDate = new Date();
+            newStamp = newDate.getTime();
+            var diff = Math.round((newStamp-startStamp)/1000);
+            
+            var d = Math.floor(diff/(24*60*60));
+            diff = diff-(d*24*60*60);
+            var h = Math.floor(diff/(60*60));
+            diff = diff-(h*60*60);
+            var m = Math.floor(diff/(60));
+            diff = diff-(m*60);
+            var s = diff;
+            
+            document.getElementById("time-elapsed").innerHTML = d+" dia(s), "+h+" hora(s), "+m+" minuto(s), "+s+" segundo(s).";
+        }
+
+        setInterval(updateClock, 1000);
+    </script>
+  </div>
+  <div class="bottomleft">
+    <p>Buena suerte.</p>
+  </div>
+</div>
 
 </body>
 </html>
