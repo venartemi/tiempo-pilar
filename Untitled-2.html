@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .democlass {
+          visibility: hidden;
+        }
+        </style>
+</head>
+<body>
+
+<h2>La página para sabe si Pilar ha follado</h2>
+
+<p>Esta página nos ofrece el insumo de tiempo que Pilar lleva sin practicar el coito.</p>
+
+<div id="time-elapsed"></div>
+
+<p id="demo"></p>
+
+<script>
+var startDateTime = new Date(2019,5,2,11,1,04,0); // YYYY (M-1) D H m s (start time and date from DB)
+var startStamp = startDateTime.getTime();
+
+var newDate = new Date();
+var newStamp = newDate.getTime();
+
+var timer;
+
+function updateClock() {
+    newDate = new Date();
+    newStamp = newDate.getTime();
+    var diff = Math.round((newStamp-startStamp)/1000);
+    
+    var d = Math.floor(diff/(24*60*60));
+    diff = diff-(d*24*60*60);
+    var h = Math.floor(diff/(60*60));
+    diff = diff-(h*60*60);
+    var m = Math.floor(diff/(60));
+    diff = diff-(m*60);
+    var s = diff;
+    
+    document.getElementById("time-elapsed").innerHTML = d+" dia(s), "+h+" hora(s), "+m+" minuto(s), "+s+" segundo(s) sin follar";
+}
+
+setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
